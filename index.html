@@ -56,6 +56,7 @@
         background-image: url('info.png');
         background-size: cover;
         background-repeat: no-repeat;
+        cursor: pointer;
     }
     div.custom-tooltip span {
         visibility: hidden;
@@ -108,23 +109,91 @@
     .hidden {
         display: none;
     }
+    #mini-map {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 300px;
+        height: 225px;
+    }
+    #panorama-title {
+        width: calc(100% - 60px);
+        height: 70px;
+        line-height: 70px;
+        font-size: 30px;
+        padding: 0 30px;
+        color:white;
+        background-color: #555; 
+    }
+    #panorama-container {
+        width: 100%;
+        height: calc(100% - 70px);
+    }
+    .mm-marker {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        background-image: url('marker.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    .mm-marker:hover {
+        background-image: url('marker.png');
+    }
+    #marker-1{
+        top: 80%;
+        left: 20%;
+    }
+    #marker-2{
+        top: 30%;
+        left: 10%;
+    }
+    #marker-3{
+        top: 40%;
+        left: 65%;
+    }
+    #marker-4{
+        top: 20%;
+        left: 80%;
+    }
+    #mm-map{
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        background-color: black;
+        background-image: url('map.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     </style>
 </head>
 
 <body>
-    <div id="panorama">
-      <div id="controls">
-          <div class="ctrl" id="pan-up">&#9650;</div>
-          <div class="ctrl" id="pan-down">&#9660;</div>
-          <div class="ctrl" id="pan-left">&#9664;</div>
-          <div class="ctrl" id="pan-right">&#9654;</div>
-          <div class="ctrl" id="zoom-in">&plus;</div>
-          <div class="ctrl" id="zoom-out">&minus;</div>
-          <div class="ctrl" id="fullscreen">&#x2922;</div>
-          <div class="ctrl" id="rotate-play">play</div>
-          <div class="ctrl" id="rotate-stop">stop</div>
-          <div class="ctrl" id="reset">reset</div>
-      </div>
+    <div id="panorama-title">Title</div>
+    <div id="panorama-container">
+        <div id="panorama">
+            <div id="mini-map">
+                <div id="mm-map"></div>
+                <div class="mm-marker" id="marker-1"></div>
+                <div class="mm-marker" id="marker-2"></div>
+                <div class="mm-marker" id="marker-3"></div>
+                <div class="mm-marker" id="marker-4"></div>
+            </div>
+            <div id="controls">
+                <div class="ctrl" id="pan-up">&#9650;</div>
+                <div class="ctrl" id="pan-down">&#9660;</div>
+                <div class="ctrl" id="pan-left">&#9664;</div>
+                <div class="ctrl" id="pan-right">&#9654;</div>
+                <div class="ctrl" id="zoom-in">&plus;</div>
+                <div class="ctrl" id="zoom-out">&minus;</div>
+                <div class="ctrl" id="fullscreen">&#x2922;</div>
+                <div class="ctrl" id="rotate-play">play</div>
+                <div class="ctrl" id="rotate-stop">stop</div>
+                <div class="ctrl" id="reset">reset</div>
+            </div>
+        </div>
     </div>
     <div id="modal" class="modal hidden"></div>
     <div id="modal-bg" class="modal-bg hidden" onclick="closeModal()"></div>
@@ -355,6 +424,19 @@ document.getElementById('reset').addEventListener('click', function(e) {
     viewer.setYaw(0);
     viewer.setPitch(0);
     console.log('reset')
+});
+
+document.getElementById('marker-1').addEventListener('click', function(e) {
+    viewer.loadScene("01");
+});
+document.getElementById('marker-2').addEventListener('click', function(e) {
+    viewer.loadScene("02");
+});
+document.getElementById('marker-3').addEventListener('click', function(e) {
+    viewer.loadScene("03");
+});
+document.getElementById('marker-4').addEventListener('click', function(e) {
+    viewer.loadScene("04");
 });
     </script>
 </body>
