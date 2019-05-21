@@ -192,6 +192,8 @@
                 <div class="ctrl" id="rotate-play">play</div>
                 <div class="ctrl" id="rotate-stop">stop</div>
                 <div class="ctrl" id="reset">reset</div>
+                <div class="ctrl" id="show-mm">show</div>
+                <div class="ctrl" id="hide-mm">hide</div>
             </div>
         </div>
     </div>
@@ -437,6 +439,13 @@ document.getElementById('marker-3').addEventListener('click', function(e) {
 });
 document.getElementById('marker-4').addEventListener('click', function(e) {
     viewer.loadScene("04");
+});
+
+document.getElementById('show-mm').addEventListener('click', function(e) {
+    document.getElementById('mini-map').classList.remove('hidden')
+});
+document.getElementById('hide-mm').addEventListener('click', function(e) {
+    document.getElementById('mini-map').classList.add('hidden')
 });
     </script>
 </body>
