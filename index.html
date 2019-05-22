@@ -126,7 +126,7 @@
         color:white;
         background-color: #555; 
     }
-    #panorama-container {
+    #panorama-viewer {
         width: 100%;
         height: calc(100% - 70px);
     }
@@ -171,29 +171,31 @@
 </head>
 
 <body>
-    <div id="panorama-title">Title</div>
-    <div id="panorama-container">
-        <div id="panorama">
-            <div id="mini-map">
-                <div id="mm-map"></div>
-                <div class="mm-marker" id="marker-1"></div>
-                <div class="mm-marker" id="marker-2"></div>
-                <div class="mm-marker" id="marker-3"></div>
-                <div class="mm-marker" id="marker-4"></div>
-            </div>
-            <div id="controls">
-                <div class="ctrl" id="pan-up">&#9650;</div>
-                <div class="ctrl" id="pan-down">&#9660;</div>
-                <div class="ctrl" id="pan-left">&#9664;</div>
-                <div class="ctrl" id="pan-right">&#9654;</div>
-                <div class="ctrl" id="zoom-in">&plus;</div>
-                <div class="ctrl" id="zoom-out">&minus;</div>
-                <div class="ctrl" id="fullscreen">&#x2922;</div>
-                <div class="ctrl" id="rotate-play">play</div>
-                <div class="ctrl" id="rotate-stop">stop</div>
-                <div class="ctrl" id="reset">reset</div>
-                <div class="ctrl" id="show-mm">show</div>
-                <div class="ctrl" id="hide-mm">hide</div>
+    <div style="width:75%; height: 75%; margin:auto;">
+        <div id="panorama-title">Title</div>
+        <div id="panorama-viewer">
+            <div id="panorama">
+                <div id="mini-map">
+                    <div id="mm-map"></div>
+                    <div class="mm-marker" id="marker-1"></div>
+                    <div class="mm-marker" id="marker-2"></div>
+                    <div class="mm-marker" id="marker-3"></div>
+                    <div class="mm-marker" id="marker-4"></div>
+                </div>
+                <div id="controls">
+                    <div class="ctrl" id="pan-up">&#9650;</div>
+                    <div class="ctrl" id="pan-down">&#9660;</div>
+                    <div class="ctrl" id="pan-left">&#9664;</div>
+                    <div class="ctrl" id="pan-right">&#9654;</div>
+                    <div class="ctrl" id="zoom-in">&plus;</div>
+                    <div class="ctrl" id="zoom-out">&minus;</div>
+                    <div class="ctrl" id="fullscreen">&#x2922;</div>
+                    <div class="ctrl" id="rotate-play">play</div>
+                    <div class="ctrl" id="rotate-stop">stop</div>
+                    <div class="ctrl" id="reset">reset</div>
+                    <div class="ctrl" id="show-mm">show</div>
+                    <div class="ctrl" id="hide-mm">hide</div>
+                </div>
             </div>
         </div>
     </div>
