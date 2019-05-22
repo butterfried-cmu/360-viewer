@@ -199,7 +199,15 @@
             </div>
         </div>
     </div>
-    <div id="modal" class="modal hidden"></div>
+    <div id="modal-text" class="modal hidden">
+
+    </div>
+    <div id="modal-image" class="modal hidden">
+
+    </div>
+    <div id="modal-video" class="modal hidden">
+
+    </div>
     <div id="modal-bg" class="modal-bg hidden" onclick="closeModal()"></div>
     <script>
         viewer = pannellum.viewer('panorama', {
@@ -249,14 +257,14 @@
                         "yaw": 150,
                         "cssClass": "hotspot-info",
                         "createTooltipFunc": hotspot,
-                        "createTooltipArgs": "Art Museum Drive"
+                        "createTooltipArgs": "1"
                     },
                     {
                         "pitch": -3,
                         "yaw": 80,
                         "cssClass": "hotspot-info",
                         "createTooltipFunc": hotspot,
-                        "createTooltipArgs": "Art Museum Drive"
+                        "createTooltipArgs": "2"
                     }]
                 },
                 "02": {
@@ -383,13 +391,13 @@
 
         function showModal(args) {
             console.log(args);
-            document.querySelector("#modal").innerHTML = args
-            document.querySelector("#modal").classList.remove('hidden')
+            document.querySelector("#modal-text").innerHTML = args
+            document.querySelector("#modal-text").classList.remove('hidden')
             document.querySelector("#modal-bg").classList.remove('hidden')
         }
 
         function closeModal() {
-            document.querySelector("#modal").classList.add('hidden')
+            document.querySelector("#modal-text").classList.add('hidden')
             document.querySelector("#modal-bg").classList.add('hidden')
         }
 
