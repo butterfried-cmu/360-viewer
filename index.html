@@ -1,463 +1,62 @@
-<!doctype html>
-<html lang="">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>360</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>หน้าแรก</title>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.pannellum.org/2.4/pannellum.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css">
-
-    <style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-        }
-        #panorama {
-            width: 100%;
-            height: 100%;
-        }
-    #controls {
-        position: absolute;
-        bottom: 0;
-        z-index: 2;
-        text-align: center;
-        width: 100%;
-        padding-bottom: 3px;
-    }
-    .ctrl {
-        padding: 8px 5px;
-        width: 30px;
-        text-align: center;
-        background: rgba(200, 200, 200, 0.8);
-        display: inline-block;
-        cursor: pointer;
-    }
-    .ctrl:hover {
-        background: rgba(200, 200, 200, 1);
-    }
-    .hotspot-marker {
-        height: 50px;
-        width: 50px;
-        background-image: url('marker.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    .hotspot-info {
-        height: 50px;
-        width: 50px;
-        background-image: url('info.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        cursor: pointer;
-    }
-    div.custom-tooltip span {
-        visibility: hidden;
-        position: absolute;
-        border-radius: 3px;
-        background-color: #fff;
-        color: #000;
-        text-align: center;
-        max-width: 200px;
-        padding: 5px 10px;
-        margin-left: -220px;
-        cursor: default;
-    }
-    div.custom-tooltip:hover span{
-        visibility: visible;
-    }
-    div.custom-tooltip:hover span:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-width: 10px;
-        border-style: solid;
-        border-color: #fff transparent transparent transparent;
-        bottom: -20px;
-        left: -10px;
-        margin: 0 50%;
-    }
-    .modal {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 500px;
-        height: 380px;
-        margin-top: -190px;
-        margin-left: -250px; 
-        background-color: white;
-        border-radius: 25px;
-        z-index: 10;
-    }
-    .modal-bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 9;
-        background-color: #0008;
-    }
-    .hidden {
-        display: none;
-    }
-    #mini-map {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 2;
-        width: 300px;
-        height: 225px;
-    }
-    #panorama-title {
-        width: calc(100% - 60px);
-        height: 70px;
-        line-height: 70px;
-        font-size: 30px;
-        padding: 0 30px;
-        color:white;
-        background-color: #555; 
-    }
-    #panorama-viewer {
-        width: 100%;
-        height: calc(100% - 70px);
-    }
-    .mm-marker {
-        position: absolute;
-        height: 30px;
-        width: 30px;
-        background-image: url('marker.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        cursor: pointer;
-    }
-    .mm-marker:hover {
-        background-image: url('marker.png');
-    }
-    #marker-1{
-        top: 80%;
-        left: 20%;
-    }
-    #marker-2{
-        top: 30%;
-        left: 10%;
-    }
-    #marker-3{
-        top: 40%;
-        left: 65%;
-    }
-    #marker-4{
-        top: 20%;
-        left: 80%;
-    }
-    #mm-map{
-        width: 100%;
-        height: 100%;
-        opacity: 0.7;
-        background-color: black;
-        background-image: url('map.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-
 <body>
-    <div style="width:75%; height: 75%; margin:auto;">
-        <div id="panorama-title">Title</div>
-        <div id="panorama-viewer">
-            <div id="panorama">
-                <div id="mini-map">
-                    <div id="mm-map"></div>
-                    <div class="mm-marker" id="marker-1"></div>
-                    <div class="mm-marker" id="marker-2"></div>
-                    <div class="mm-marker" id="marker-3"></div>
-                    <div class="mm-marker" id="marker-4"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-md-5 my-sm-2 shadow ">
+                    <div class="card-header">
+                        <h2>
+                            แบบจําลองเสมือนจริงระบบพลังงานทดแทน สำหรับฝึกการเขียนโปรแกรมระบบสมองกลฝังตัว
+                            และหลักสูตรฝึกอบรมแบบใช้ปัญหาเป็นฐาน
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">คําอธิบายเบื้องต้น</h5>
+                        <p class="card-text">
+                            <b>Virtual reality</b> หรือ <b>VR</b> คือ การจําลองสภาพแวดล้อมจริงเข้าไปให้เสมือนจริง โดยผ่านการรับรู้จากการมองเห็น เสียง สัมผัส
+                            แม้กระทั้งกลิ่น โดยจะตัดขาดเราออกจากสภาพแวดล้อมปัจจุบันเพื่อเข้าไปสู่ภาพที่จําลองขึ้นมาตัวอย่างเช่น การจําลองสถานที่ google
+                            street view<br>
+                            <b>Augmented reality</b> หรือ <b>AR</b> คือ การรวม สภาพแวดล้อมจริง กับ วัตถุเสมือน เข้าด้วยกันในเวลาเดียวกัน โดยวัตถุเสมือนที่ว่า
+                            นั้น อาจจะเป็น ภาพ, วิดิโอ, เสียง, ข้อมูลต่าง ๆ ที่ประมวลผลมาจากคอมพิวเตอร์, มือถือ, เทปเลต, หรืออุปกรณ์สวมใส่ขนาดเล็กต่าง ๆ
+                            และทําให้เราสามารถตอบสนองกับสิ่งที่จําลองนั้นได้ ตัวอย่างของการใช้งาน AR ก็คือ เกม Pokémon Go<br>
+                            <b>360° Virtual Tour</b> คือ ทัวร์เสมือนจริงเป็นเทคโนโลยีสมัยใหม่โดยการจําลองสถานที่จริง เหมาะกับงานอีเว้นท์ การนําเสนอ
+                            ข้อมูลสถานที่ และการสร้างสื่อโฆษณา
+                        </p>
+                    </div>
                 </div>
-                <div id="controls">
-                    <div class="ctrl" id="pan-up">&#9650;</div>
-                    <div class="ctrl" id="pan-down">&#9660;</div>
-                    <div class="ctrl" id="pan-left">&#9664;</div>
-                    <div class="ctrl" id="pan-right">&#9654;</div>
-                    <div class="ctrl" id="zoom-in">&plus;</div>
-                    <div class="ctrl" id="zoom-out">&minus;</div>
-                    <div class="ctrl" id="fullscreen">&#x2922;</div>
-                    <div class="ctrl" id="rotate-play">play</div>
-                    <div class="ctrl" id="rotate-stop">stop</div>
-                    <div class="ctrl" id="reset">reset</div>
-                    <div class="ctrl" id="show-mm">show</div>
-                    <div class="ctrl" id="hide-mm">hide</div>
-                </div>
+            </div>
+            <div class="col-md-6">
+                <a href="programming.html">
+                    <div class="card mt-4 mt-md-2 shadow text-white bg-primary" style="height: 250px; border-radius: 50px">
+                        <div class="card-body font-weight-bold mx-auto">
+                            <span>ระบบสำหรับฝึกการเขียนโปรแกรมระบบสมองกลฝังตัว</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="tour.html">
+                    <div class="card mt-4 mt-md-2 shadow text-white bg-success" style="height: 250px; border-radius: 50px">
+                        <div class="card-body font-weight-bold mx-auto">
+                            <span>Virtual Tour</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-    <div id="modal-text" class="modal hidden">
-
-    </div>
-    <div id="modal-image" class="modal hidden">
-
-    </div>
-    <div id="modal-video" class="modal hidden">
-
-    </div>
-    <div id="modal-bg" class="modal-bg hidden" onclick="closeModal()"></div>
-    <script>
-        viewer = pannellum.viewer('panorama', {
-            "default": {
-                "autoLoad": true,
-                "firstScene": "01",
-                "sceneFadeDuration": 1000,
-                "showControls": false,
-                "autoRotate": -2,
-                "autoRotateInactivityDelay": 50,
-                "compass": true
-            },
-            "scenes": {
-                "01": {
-                    "title": "01",
-                    "hfov": 110,
-                    "pitch": -3,
-                    "yaw": 117,
-                    "type": "equirectangular",
-                    "panorama": "360-1-4096.jpg",
-                    "hotSpots": [{
-                        "pitch": -2.1,
-                        "yaw": 132.9,
-                        "type": "scene",
-                        "text": "02",
-                        "sceneId": "02",
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": -5,
-                        "yaw": 50,
-                        "type": "scene",
-                        "text": "03",
-                        "sceneId": "03",
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": 8,
-                        "yaw": 55,
-                        "type": "scene",
-                        "text": "04",
-                        "sceneId": "04",
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": -4,
-                        "yaw": 150,
-                        "cssClass": "hotspot-info",
-                        "createTooltipFunc": hotspot,
-                        "createTooltipArgs": "1"
-                    },
-                    {
-                        "pitch": -3,
-                        "yaw": 80,
-                        "cssClass": "hotspot-info",
-                        "createTooltipFunc": hotspot,
-                        "createTooltipArgs": "2"
-                    }]
-                },
-                "02": {
-                    "title": "02",
-                    "hfov": 110,
-                    "yaw": 5,
-                    "type": "equirectangular",
-                    "panorama": "360-2-4096.jpg",
-                    "hotSpots": [{
-                        "pitch": -0.6,
-                        "yaw": 37.1,
-                        "type": "scene",
-                        "text": "01",
-                        "sceneId": "01",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": -2,
-                        "yaw": 60,
-                        "type": "scene",
-                        "text": "03",
-                        "sceneId": "03",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": 8,
-                        "yaw": 55,
-                        "type": "scene",
-                        "text": "04",
-                        "sceneId": "04",
-                        "cssClass": "hotspot-marker",
-                    }]
-                },
-                "03": {
-                    "title": "03",
-                    "hfov": 110,
-                    "yaw": 5,
-                    "type": "equirectangular",
-                    "panorama": "360-3-4096.jpg",
-                    "hotSpots": [{
-                        "pitch": -0.6,
-                        "yaw": 37.1,
-                        "type": "scene",
-                        "text": "01",
-                        "sceneId": "01",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": 5,
-                        "yaw": 40,
-                        "type": "scene",
-                        "text": "02",
-                        "sceneId": "02",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": 8,
-                        "yaw": 55,
-                        "type": "scene",
-                        "text": "04",
-                        "sceneId": "04",
-                        "cssClass": "hotspot-marker",
-                    }]
-                },
-                "04":{
-                    "title": "04",
-                    "hfov": 110,
-                    "yaw": 5,
-                    "type": "equirectangular",
-                    "panorama": "360-4-4096.jpg",
-                    "hotSpots": [{
-                        "pitch": -0.6,
-                        "yaw": 37.1,
-                        "type": "scene",
-                        "text": "01",
-                        "sceneId": "01",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": 5,
-                        "yaw": 40,
-                        "type": "scene",
-                        "text": "02",
-                        "sceneId": "02",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    },
-                    {
-                        "pitch": 2.5,
-                        "yaw": 60,
-                        "type": "scene",
-                        "text": "04",
-                        "sceneId": "04",
-                        "targetYaw": -23,
-                        "targetPitch": 2,
-                        "cssClass": "hotspot-marker",
-                    }]
-                }
-            }
-        });
-
-        function hotspot(hotSpotDiv, args) {
-            console.log(args);
-            hotSpotDiv.classList.add('custom-tooltip');
-            var span = document.createElement('span');
-            span.innerHTML = args;
-            hotSpotDiv.appendChild(span);
-            span.style.width = span.scrollWidth - 20 + 'px';
-            span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
-            span.style.marginTop = -span.scrollHeight - 12 + 'px';
-            hotSpotDiv.onclick = function() { showModal(args) };
-        }
-
-        function showModal(args) {
-            console.log(args);
-            document.querySelector("#modal-text").innerHTML = args
-            document.querySelector("#modal-text").classList.remove('hidden')
-            document.querySelector("#modal-bg").classList.remove('hidden')
-        }
-
-        function closeModal() {
-            document.querySelector("#modal-text").classList.add('hidden')
-            document.querySelector("#modal-bg").classList.add('hidden')
-        }
-
-        // Make buttons work
-document.getElementById('pan-up').addEventListener('click', function(e) {
-    viewer.setPitch(viewer.getPitch() + 10);
-});
-document.getElementById('pan-down').addEventListener('click', function(e) {
-    viewer.setPitch(viewer.getPitch() - 10);
-});
-document.getElementById('pan-left').addEventListener('click', function(e) {
-    viewer.setYaw(viewer.getYaw() - 10);
-});
-document.getElementById('pan-right').addEventListener('click', function(e) {
-    viewer.setYaw(viewer.getYaw() + 10);
-});
-document.getElementById('zoom-in').addEventListener('click', function(e) {
-    viewer.setHfov(viewer.getHfov() - 10);
-});
-document.getElementById('zoom-out').addEventListener('click', function(e) {
-    viewer.setHfov(viewer.getHfov() + 10);
-});
-document.getElementById('fullscreen').addEventListener('click', function(e) {
-    viewer.toggleFullscreen();
-});
-
-document.getElementById('rotate-play').addEventListener('click', function(e) {
-    viewer.startAutoRotate();
-    console.log('start auto rotate')
-});
-document.getElementById('rotate-stop').addEventListener('click', function(e) {
-    viewer.stopAutoRotate();
-    console.log('stop auto rotate')
-});
-document.getElementById('reset').addEventListener('click', function(e) {
-    viewer.setYaw(0);
-    viewer.setPitch(0);
-    console.log('reset')
-});
-
-document.getElementById('marker-1').addEventListener('click', function(e) {
-    viewer.loadScene("01");
-});
-document.getElementById('marker-2').addEventListener('click', function(e) {
-    viewer.loadScene("02");
-});
-document.getElementById('marker-3').addEventListener('click', function(e) {
-    viewer.loadScene("03");
-});
-document.getElementById('marker-4').addEventListener('click', function(e) {
-    viewer.loadScene("04");
-});
-
-document.getElementById('show-mm').addEventListener('click', function(e) {
-    document.getElementById('mini-map').classList.remove('hidden')
-});
-document.getElementById('hide-mm').addEventListener('click', function(e) {
-    document.getElementById('mini-map').classList.add('hidden')
-});
-    </script>
 </body>
-
 </html>
